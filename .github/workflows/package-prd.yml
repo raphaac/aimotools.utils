@@ -34,16 +34,17 @@ jobs:
       - name: Generate Package
         run: dotnet pack -c release -o ./dist/
 
-      - name: Move folder
-        run: cd ./dist
-
-      - name: Lista resutlados
-        run: ls -l        
+      - name: Lista arquivos no diretório ./dist
+        run: ls -l ./dist
 
   deploy:    
     runs-on: ubuntu-latest
     needs: build    
 
     steps:
+
+      - name: Lista arquivos no diretório ./dist antes do push
+        run: ls -l ./dist
+    
       - name: Publish Package        
         run: dotnet nuget push ./dist/* --api-key ${{secrets.API_KEY_PACKAGE}} --source https://nuget.pkg.github.com/raphaac/index.json             
