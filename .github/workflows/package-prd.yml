@@ -40,4 +40,4 @@ jobs:
 
     steps:
       - name: Publish Package        
-        run: dotnet nuget push .\dist\* --api-key ${{secrets.API_KEY_PACKAGE}} --source https://nuget.pkg.github.com/raphaac/index.json             
+        run: dotnet nuget push ./dist/* --api-key ${{secrets.API_KEY_PACKAGE}} --source https://nuget.pkg.github.com/raphaac/index.json             
