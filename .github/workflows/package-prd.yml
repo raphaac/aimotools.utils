@@ -34,6 +34,9 @@ jobs:
       - name: Generate Package
         run: dotnet pack -c release -o ./dist/
 
+      - name: Move folder
+        run: cd ./dist
+
       - name: Lista resutlados
         run: ls -l        
 
