@@ -18,18 +18,18 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
-
-      - name: Onde estou
-        run: pwd
       
       - name: Lista arquivos
         run: ls -l
 
-      - name: Build with dotnet
-        run: dotnet build --configuration Release
+      - name: Restore
+        run: dotnet restore
 
-      - name: dotnet create package
-        run: dotnet publish -c Release -o /publish
+      - name: Build with dotnet
+        run: dotnet build --no-restore
+
+      - name: dotnet release
+        run: dotnet build -c Release
 
       - name: Generate Package
         run: dotnet pack -c release -o ./dist/
