@@ -34,6 +34,9 @@ jobs:
       - name: Generate Package
         run: dotnet pack -c release -o ./dist/
 
+      - name: Lista resutlados
+        run: ls -l        
+
   deploy:    
     runs-on: ubuntu-latest
     needs: build    
